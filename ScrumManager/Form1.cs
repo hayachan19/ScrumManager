@@ -16,15 +16,5 @@ namespace ScrumManager
         {
             InitializeComponent();
         }
-
-        private void tabControl1_MouseClick(object sender, MouseEventArgs e)
-        {
-            var test = tabControl1.SelectedTab;
-            if (e.Button == MouseButtons.Right)
-               
-            { 
-                //tabControl1.TabPages.Remove(tabControl1.); 
-            }
-        }
     }
 }
