@@ -37,15 +37,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ProjectsTab = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.projectsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.scrumManagerDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.scrumManagerDataSet = new ScrumManager.ScrumManagerDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.UsersTab = new System.Windows.Forms.TabPage();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -54,7 +53,18 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.projectsTableAdapter = new ScrumManager.ScrumManagerDataSetTableAdapters.ProjectsTableAdapter();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.scrumManagerDataSet1 = new ScrumManager.ScrumManagerDataSet1();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter = new ScrumManager.ScrumManagerDataSet1TableAdapters.UsersTableAdapter();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.realNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactEmailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
@@ -68,12 +78,16 @@
             this.tabControl1.SuspendLayout();
             this.ProjectsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scrumManagerDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrumManagerDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.UsersTab.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scrumManagerDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -132,18 +146,18 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.propertyGrid1);
             this.splitContainer1.Size = new System.Drawing.Size(1330, 577);
-            this.splitContainer1.SplitterDistance = 807;
+            this.splitContainer1.SplitterDistance = 805;
             this.splitContainer1.TabIndex = 0;
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.ProjectsTab);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.UsersTab);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(807, 577);
+            this.tabControl1.Size = new System.Drawing.Size(805, 577);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.Tag = "";
             // 
@@ -154,7 +168,7 @@
             this.ProjectsTab.Location = new System.Drawing.Point(4, 22);
             this.ProjectsTab.Name = "ProjectsTab";
             this.ProjectsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ProjectsTab.Size = new System.Drawing.Size(799, 551);
+            this.ProjectsTab.Size = new System.Drawing.Size(797, 551);
             this.ProjectsTab.TabIndex = 0;
             this.ProjectsTab.Tag = "";
             this.ProjectsTab.Text = "Projekty";
@@ -168,53 +182,53 @@
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.startDateDataGridViewTextBoxColumn,
-            this.endDateDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.projectsBindingSource;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.dataGridView2.DataSource = this.projectsBindingSource1;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView2.Location = new System.Drawing.Point(3, 3);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(793, 545);
+            this.dataGridView2.Size = new System.Drawing.Size(791, 545);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDoubleClick);
             // 
-            // idDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // nameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // startDateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            this.startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
-            this.startDateDataGridViewTextBoxColumn.HeaderText = "StartDate";
-            this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "StartDate";
+            this.dataGridViewTextBoxColumn3.HeaderText = "StartDate";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // endDateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "EndDate";
+            this.dataGridViewTextBoxColumn4.HeaderText = "EndDate";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // projectsBindingSource
+            // projectsBindingSource1
             // 
-            this.projectsBindingSource.DataMember = "Projects";
-            this.projectsBindingSource.DataSource = this.scrumManagerDataSetBindingSource;
-            // 
-            // scrumManagerDataSetBindingSource
-            // 
-            this.scrumManagerDataSetBindingSource.DataSource = this.scrumManagerDataSet;
-            this.scrumManagerDataSetBindingSource.Position = 0;
+            this.projectsBindingSource1.DataMember = "Projects";
+            this.projectsBindingSource1.DataSource = this.scrumManagerDataSet;
             // 
             // scrumManagerDataSet
             // 
@@ -228,25 +242,26 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(793, 545);
+            this.dataGridView1.Size = new System.Drawing.Size(791, 545);
             this.dataGridView1.TabIndex = 0;
             // 
-            // tabPage2
+            // UsersTab
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(799, 551);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.UsersTab.Controls.Add(this.dataGridView3);
+            this.UsersTab.Location = new System.Drawing.Point(4, 22);
+            this.UsersTab.Name = "UsersTab";
+            this.UsersTab.Padding = new System.Windows.Forms.Padding(3);
+            this.UsersTab.Size = new System.Drawing.Size(797, 551);
+            this.UsersTab.TabIndex = 1;
+            this.UsersTab.Text = "Użytkownicy";
+            this.UsersTab.UseVisualStyleBackColor = true;
             // 
             // propertyGrid1
             // 
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(519, 577);
+            this.propertyGrid1.Size = new System.Drawing.Size(521, 577);
             this.propertyGrid1.TabIndex = 0;
             // 
             // toolStrip1
@@ -275,7 +290,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(30, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(22, 6);
             // 
             // toolStripButton2
             // 
@@ -283,8 +298,9 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(30, 20);
+            this.toolStripButton2.Size = new System.Drawing.Size(22, 20);
             this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripButton3
             // 
@@ -292,7 +308,7 @@
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(30, 20);
+            this.toolStripButton3.Size = new System.Drawing.Size(22, 20);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // menuStrip1
@@ -312,9 +328,90 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // projectsBindingSource
+            // 
+            this.projectsBindingSource.DataMember = "Projects";
+            // 
             // projectsTableAdapter
             // 
             this.projectsTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.userNameDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn,
+            this.realNameDataGridViewTextBoxColumn,
+            this.contactEmailDataGridViewTextBoxColumn,
+            this.roleDataGridViewTextBoxColumn});
+            this.dataGridView3.DataSource = this.usersBindingSource;
+            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView3.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.Size = new System.Drawing.Size(791, 545);
+            this.dataGridView3.TabIndex = 0;
+            // 
+            // scrumManagerDataSet1
+            // 
+            this.scrumManagerDataSet1.DataSetName = "ScrumManagerDataSet1";
+            this.scrumManagerDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "Users";
+            this.usersBindingSource.DataSource = this.scrumManagerDataSet1;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // userNameDataGridViewTextBoxColumn
+            // 
+            this.userNameDataGridViewTextBoxColumn.DataPropertyName = "UserName";
+            this.userNameDataGridViewTextBoxColumn.HeaderText = "UserName";
+            this.userNameDataGridViewTextBoxColumn.Name = "userNameDataGridViewTextBoxColumn";
+            this.userNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // realNameDataGridViewTextBoxColumn
+            // 
+            this.realNameDataGridViewTextBoxColumn.DataPropertyName = "RealName";
+            this.realNameDataGridViewTextBoxColumn.HeaderText = "RealName";
+            this.realNameDataGridViewTextBoxColumn.Name = "realNameDataGridViewTextBoxColumn";
+            this.realNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactEmailDataGridViewTextBoxColumn
+            // 
+            this.contactEmailDataGridViewTextBoxColumn.DataPropertyName = "ContactEmail";
+            this.contactEmailDataGridViewTextBoxColumn.HeaderText = "ContactEmail";
+            this.contactEmailDataGridViewTextBoxColumn.Name = "contactEmailDataGridViewTextBoxColumn";
+            this.contactEmailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // roleDataGridViewTextBoxColumn
+            // 
+            this.roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
+            this.roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
+            this.roleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -344,14 +441,18 @@
             this.tabControl1.ResumeLayout(false);
             this.ProjectsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scrumManagerDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.scrumManagerDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.UsersTab.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scrumManagerDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -362,7 +463,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage ProjectsTab;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage UsersTab;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -371,9 +472,9 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.BindingSource scrumManagerDataSetBindingSource;
-        private ScrumManagerDataSet scrumManagerDataSet;
+        //private ScrumManagerDataSet scrumManagerDataSet;
         private System.Windows.Forms.BindingSource projectsBindingSource;
-        private ScrumManagerDataSetTableAdapters.ProjectsTableAdapter projectsTableAdapter;
+        //private ScrumManagerDataSetTableAdapters.ProjectsTableAdapter projectsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
@@ -383,6 +484,23 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private ScrumManagerDataSet scrumManagerDataSet;
+        private System.Windows.Forms.BindingSource projectsBindingSource1;
+        private ScrumManagerDataSetTableAdapters.ProjectsTableAdapter projectsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private ScrumManagerDataSet1 scrumManagerDataSet1;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private ScrumManagerDataSet1TableAdapters.UsersTableAdapter usersTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn realNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactEmailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
     }
 }
 

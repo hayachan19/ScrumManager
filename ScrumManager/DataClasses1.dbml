@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScrumManager" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=LENNY\SQLEXPRESS;Initial Catalog=ScrumManager;Persist Security Info=True;User ID=sa;Pooling=False" SettingsObjectName="ScrumManager.Properties.Settings" SettingsPropertyName="ScrumManagerConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Projects" Member="Projects">
-    <Type Name="Project">
+  <Table Name="dbo.Phases" Member="Phases">
+    <Type Name="Phase">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="Project_ProjectMember" Member="ProjectMembers" ThisKey="Id" OtherKey="ProjectId" Type="ProjectMember" />
-      <Association Name="Project_Sprint" Member="Sprints" ThisKey="Id" OtherKey="ProjectId" Type="Sprint" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="PreviousPhaseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NextPhaseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Phase_SprintTask" Member="SprintTasks" ThisKey="Id" OtherKey="PhaseId" Type="SprintTask" />
     </Type>
   </Table>
   <Table Name="dbo.ProjectMembers" Member="ProjectMembers">
@@ -15,8 +14,51 @@
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="ProjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Project_ProjectMember" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Project" IsForeignKey="true" />
       <Association Name="User_ProjectMember" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="Project_ProjectMember" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sprints" Member="Sprints">
+    <Type Name="Sprint">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Sprint_SprintTask" Member="SprintTasks" ThisKey="Id" OtherKey="SprintId" Type="SprintTask" />
+      <Association Name="Project_Sprint" Member="Project" ThisKey="ProjectID" OtherKey="Id" Type="Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projects" Member="Projects">
+    <Type Name="Project">
+      <Column Name="Id" AutoSync="Never" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Project_ProjectMember" Member="ProjectMembers" ThisKey="Id" OtherKey="ProjectId" Type="ProjectMember" />
+      <Association Name="Project_Sprint" Member="Sprints" ThisKey="Id" OtherKey="ProjectID" Type="Sprint" />
+      <Association Name="Project_Task" Member="Tasks" ThisKey="Id" OtherKey="ProjectId" Type="Task" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SprintTasks" Member="SprintTasks">
+    <Type Name="SprintTask">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SprintId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhaseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Task_SprintTask" Member="Task" ThisKey="TaskId" OtherKey="Id" Type="Task" IsForeignKey="true" />
+      <Association Name="Sprint_SprintTask" Member="Sprint" ThisKey="SprintId" OtherKey="Id" Type="Sprint" IsForeignKey="true" />
+      <Association Name="Phase_SprintTask" Member="Phase" ThisKey="PhaseId" OtherKey="Id" Type="Phase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tasks" Member="Tasks">
+    <Type Name="Task">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Task_SprintTask" Member="SprintTasks" ThisKey="Id" OtherKey="TaskId" Type="SprintTask" />
+      <Association Name="Project_Task" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Project" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
@@ -28,17 +70,6 @@
       <Column Name="ContactEmail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Role" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
       <Association Name="User_ProjectMember" Member="ProjectMembers" ThisKey="Id" OtherKey="UserId" Type="ProjectMember" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Sprints" Member="Sprints">
-    <Type Name="Sprint">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="ProjectID" Member="ProjectId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Project_Sprint" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Project" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
