@@ -36,6 +36,12 @@ namespace ScrumManager
 
             //doesnt allow nulls identity needed
             test.SubmitChanges();
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
