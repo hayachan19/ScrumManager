@@ -99,6 +99,12 @@
     <Compile Include="StatusChoiceForm.Designer.cs">
       <DependentUpon>StatusChoiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TableUserControl.Designer.cs">
+      <DependentUpon>TableUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="TaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     </Compile>
     <Compile Include="UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WelcomeUserControl.Designer.cs">
+      <DependentUpon>WelcomeUserControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -138,11 +150,17 @@
     <EmbeddedResource Include="StatusChoiceForm.resx">
       <DependentUpon>StatusChoiceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TableUserControl.resx">
+      <DependentUpon>TableUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WelcomeUserControl.resx">
+      <DependentUpon>WelcomeUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
