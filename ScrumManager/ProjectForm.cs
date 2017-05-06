@@ -16,5 +16,16 @@ namespace ScrumManager
         {
             InitializeComponent();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataClassesDataContext dbContext = new DataClassesDataContext();
+            Project newProject = new Project();
+            newProject.Name = textBox1.Text;
+            newProject.StartDate = dateTimePicker1.Value;
+            newProject.EndDate = dateTimePicker2.Value;
+            dbContext.Projects.InsertOnSubmit(newProject);
+            dbContext.SubmitChanges();
+        }
     }
 }

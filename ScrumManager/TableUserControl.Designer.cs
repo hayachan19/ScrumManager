@@ -29,30 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataTableView = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.otwórzWNowejZakładceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.właściwościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableView)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataTableView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(891, 591);
-            this.dataGridView1.TabIndex = 0;
+            this.dataTableView.AllowUserToAddRows = false;
+            this.dataTableView.AllowUserToDeleteRows = false;
+            this.dataTableView.AllowUserToOrderColumns = true;
+            this.dataTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataTableView.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataTableView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataTableView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataTableView.Location = new System.Drawing.Point(0, 0);
+            this.dataTableView.MultiSelect = false;
+            this.dataTableView.Name = "dataTableView";
+            this.dataTableView.ReadOnly = true;
+            this.dataTableView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataTableView.Size = new System.Drawing.Size(891, 591);
+            this.dataTableView.TabIndex = 0;
+            this.dataTableView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataTableView_CellMouseDoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -78,11 +79,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataTableView);
             this.Name = "TableUserControl";
             this.Size = new System.Drawing.Size(891, 591);
             this.Load += new System.EventHandler(this.TableUserControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTableView)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -90,7 +91,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataTableView;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem otwórzWNowejZakładceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem właściwościToolStripMenuItem;

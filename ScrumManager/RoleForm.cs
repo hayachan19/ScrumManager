@@ -19,7 +19,7 @@ namespace ScrumManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataClasses1DataContext dbContext = new DataClasses1DataContext();
+            DataClassesDataContext dbContext = new DataClassesDataContext();
             //dbContext.Users;
             Role newRole = new Role();
             newRole.Name = textBox2.Text;
