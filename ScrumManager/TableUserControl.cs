@@ -30,8 +30,10 @@ namespace ScrumManager
                 //case 'f': LoadPhaseTable(); break; //warto?
                 case 'p': LoadProjectTable(); break;
                 case 's': LoadSprintTable(someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith); break;
-                //case 't': LoadTaskTable(); break;
+                case 't': LoadTaskTable(someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith); break;
                 default: break;
+                    //na boku guziczki do wlasciwosci
+
             }
         }
 
@@ -46,8 +48,6 @@ namespace ScrumManager
         {
             DataClassesDataContext dbContext = new DataClassesDataContext();
             var data = dbContext.Users;
-            //dataGridView1.DataSource = test;
-            //var cols = dataTableView.Columns;
             dataTableView.ColumnCount = 5;
             dataTableView.Columns[0].Name = "ID";
             dataTableView.Columns[1].Name = "Username";
@@ -56,21 +56,15 @@ namespace ScrumManager
             dataTableView.Columns[4].Name = "Role";
             foreach (var row in data)
             {
-                string roleName = "ass"; //temp
+                string roleName = "temp"; //temp
                 string[] record = { row.Id.ToString(), row.UserName, row.RealName, row.ContactEmail, roleName };
                 dataTableView.Rows.Add(record);
             }
-            //dataGridView1.Columns.Add();
-            //dataGridView1.Columns.Remove("RoleId");
         }
         private void LoadRoleTable()
         {
             DataClassesDataContext dbContext = new DataClassesDataContext();
             var test = dbContext.Roles;
-            //dataGridView1.DataSource = test;
-            var cols = dataTableView.Columns;
-            DataGridViewColumn aa = new DataGridViewColumn();
-            //aa.
             dataTableView.ColumnCount = 3;
             dataTableView.Columns[0].Name = "ID";
             dataTableView.Columns[1].Name = "Nazwa";
@@ -80,18 +74,12 @@ namespace ScrumManager
                 string[] record = { row.Id.ToString(), row.Name, row.SQLName };
                 dataTableView.Rows.Add(record);
             }
-            //dataGridView1.Columns.Add();
-            //dataGridView1.Columns.Remove("RoleId");
         }
 
         private void LoadProjectTable()
         {
             DataClassesDataContext dbContext = new DataClassesDataContext();
             var test = dbContext.Projects;
-            //dataGridView1.DataSource = test;
-            var cols = dataTableView.Columns;
-            DataGridViewColumn aa = new DataGridViewColumn();
-            //aa.
             dataTableView.ColumnCount = 4;
             dataTableView.Columns[0].Name = "ID";
             dataTableView.Columns[1].Name = "Nazwa";
@@ -102,18 +90,12 @@ namespace ScrumManager
                 string[] record = { row.Id.ToString(), row.Name, row.StartDate.ToLongDateString(), row.EndDate.ToShortDateString() };
                 dataTableView.Rows.Add(record);
             }
-            //dataGridView1.Columns.Add();
-            //dataGridView1.Columns.Remove("RoleId");
         }
 
         private void LoadSprintTable(int projectId)
         {
             DataClassesDataContext dbContext = new DataClassesDataContext();
             var test = dbContext.Sprints.Where(p => p.ProjectId == projectId);
-            //dataGridView1.DataSource = test;
-            var cols = dataTableView.Columns;
-            //DataGridViewColumn aa = new DataGridViewColumn();
-            //aa.
             dataTableView.ColumnCount = 6;
             dataTableView.Columns[0].Name = "ID";
             dataTableView.Columns[1].Name = "Nazwa";
@@ -126,8 +108,21 @@ namespace ScrumManager
                 string[] record = { row.Id.ToString(), row.Name, row.Description, row.StartDate.ToLongDateString(), row.EndDate.ToShortDateString(), row.ProjectId.ToString() };
                 dataTableView.Rows.Add(record);
             }
-            //dataGridView1.Columns.Add();
-            //dataGridView1.Columns.Remove("RoleId");
+        }
+
+        private void LoadTaskTable(int projectId)
+        {
+            DataClassesDataContext dbContext = new DataClassesDataContext();
+            var test = dbContext.Tasks.Where(p => p.ProjectId == projectId);
+            dataTableView.ColumnCount = 3;
+            dataTableView.Columns[0].Name = "ID";
+            dataTableView.Columns[1].Name = "Nazwa";
+            dataTableView.Columns[2].Name = "start";
+            foreach (var row in test)
+            {
+                string[] record = { row.Id.ToString(), row.Name, row.ProjectId.ToString() };
+                dataTableView.Rows.Add(record);
+            }
         }
 
 
@@ -143,12 +138,17 @@ namespace ScrumManager
                 dataTable.TableDataMode = 's';
                 dataTable.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = testid;
                 test.Controls.Add(dataTable);
+
+                TabPage test2 = new TabPage("Zadania" + testid);
+                test2.Tag = 't';
+                TableUserControl dataTable2 = new TableUserControl();
+                dataTable2.TableDataMode = 't';
+                dataTable2.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = testid;
+                test2.Controls.Add(dataTable2);
+
                 MainForm mainFormtest = (MainForm)this.Parent.Parent.Parent.Parent.Parent; //heh
-                // mainFormtest.TabWrapper_Set = test;
-                //mainFormtest.TabWrapperPage_Set = test;
                 mainFormtest.TabControlPages2 = test;
-                //tabControl.TabPages.Add(test);
-                //tabControl.SelectedTab = test;
+                mainFormtest.TabControlPages2 = test2;
             }
 
 
@@ -157,9 +157,19 @@ namespace ScrumManager
 
         }
 
+        private void dataTableView_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = Convert.ToInt16(dataTableView.SelectedCells[0].Value);
+            }
 
-        
-            
-            
+            catch (ArgumentOutOfRangeException)
+            {
+                //sam nie wiem jak to ugryźć
+
+            }
+
         }
+    }
 }

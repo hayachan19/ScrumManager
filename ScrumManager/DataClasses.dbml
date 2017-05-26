@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScrumManager" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ScrumManager" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ScrumManager.mdf;Integrated Security=True" SettingsObjectName="ScrumManager.Properties.Settings" SettingsPropertyName="ScrumManagerConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.PhaseFlow" Member="PhaseFlows">
     <Type Name="PhaseFlow">

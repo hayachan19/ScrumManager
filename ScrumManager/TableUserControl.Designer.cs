@@ -42,6 +42,7 @@
             this.dataTableView.AllowUserToAddRows = false;
             this.dataTableView.AllowUserToDeleteRows = false;
             this.dataTableView.AllowUserToOrderColumns = true;
+            this.dataTableView.AllowUserToResizeRows = false;
             this.dataTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataTableView.ContextMenuStrip = this.contextMenuStrip1;
             this.dataTableView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -54,6 +55,7 @@
             this.dataTableView.Size = new System.Drawing.Size(891, 591);
             this.dataTableView.TabIndex = 0;
             this.dataTableView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataTableView_CellMouseDoubleClick);
+            this.dataTableView.SelectionChanged += new System.EventHandler(this.dataTableView_SelectionChanged);
             // 
             // contextMenuStrip1
             // 
