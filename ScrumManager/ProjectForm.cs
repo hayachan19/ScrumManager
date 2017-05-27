@@ -24,37 +24,55 @@ namespace ScrumManager
             InitializeComponent();
             editMode = true;
             editID = id;
-            DataClassesDataContext dbContext = new DataClassesDataContext();
+            Delete_Button.Visible = false;
+            DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString);
             Project editProject = dbContext.Projects.Single(p => p.Id == id);
-            textBox1.Text = editProject.Name;
-            dateTimePicker1.Value = editProject.StartDate;
-            dateTimePicker2.Value = editProject.EndDate;
+            ProjectName_TextBox.Text = editProject.Name;
+            ProjectStart_DatePicker.Value = editProject.StartDate;
+            ProjectEnd_DatePicker.Value = editProject.EndDate;
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void OK_Button_Click(object sender, EventArgs e)
         {
-            DataClassesDataContext dbContext = new DataClassesDataContext();
-            Project newProject = new Project();
-            newProject.Name = textBox1.Text;
-            newProject.StartDate = dateTimePicker1.Value;
-            newProject.EndDate = dateTimePicker2.Value;
-            dbContext.Projects.InsertOnSubmit(newProject);
-            dbContext.SubmitChanges();
-            Close();
+            DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString);
+            if (editMode == false)
+            {
+                Project newProject = new Project();
+                newProject.Name = ProjectName_TextBox.Text;
+                newProject.StartDate = ProjectStart_DatePicker.Value;
+                newProject.EndDate = ProjectEnd_DatePicker.Value;
+                dbContext.Projects.InsertOnSubmit(newProject);
+            }
+            else
+            {
+                Project editProject = dbContext.Projects.Single(p => p.Id == editID);
+                editProject.Name = ProjectName_TextBox.Text;
+                editProject.StartDate = ProjectStart_DatePicker.Value;
+                editProject.EndDate = ProjectEnd_DatePicker.Value;
+            }
+            try
+            {
+                dbContext.SubmitChanges();
+                Close();
+            }
+            catch (System.Data.SqlClient.SqlException exception)
+            {
+                DialogResult sqlError = MessageBox.Show(exception.Message, "Błąd SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Cancel_Button_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Delete_Button_Click(object sender, EventArgs e)
         {
             if (editMode == true && editID != null)
             {
-                DataClassesDataContext dbContext = new DataClassesDataContext();
+                DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString);
                 Project editProject = dbContext.Projects.Single(p => p.Id == editID);
                 dbContext.Projects.DeleteOnSubmit(editProject);
                 dbContext.SubmitChanges();

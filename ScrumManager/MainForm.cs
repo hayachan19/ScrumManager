@@ -12,22 +12,33 @@ namespace ScrumManager
 {
     public partial class MainForm : Form
     {
+
+
+        /*
+         * uzytkownik
+         * moze wejsc w projekty gdzie jest zapisany - projectmembers
+         * moze przejac zadania bez uzytka
+         * moze zmienic stan tylko w swoich zadaniach
+         * dostep do projekty, sprinty, zadania, jedynie edycja stanu w okienku edycji zadania w sprincie
+         * 
+         * kierownik
+         * moze zakladac projekty i dodawac userow do nich blablabla wszystko oprócz edycji rol, userow i faz
+         * 
+         * admin
+         * 
+        */
         TableUserControl dataTable;
-        // DataClassesDataContext dbContext;
+
         public MainForm()
         {
             InitializeComponent();
-
         }
-        //oddzielna klasa jako wrapper, chyba
 
-        // private TabControl.TabPageCollection tabControlPages;
         public TabControl.TabPageCollection TabControlPages
         {
             get { return tabControl.TabPages; }
-            //set { tabControl.TabPages.Add(value); }
         }
-        //private TabPage tabControlPages2;
+
         public TabPage TabControlPages2
         {
             set { tabControl.TabPages.Add(value); }
@@ -40,9 +51,7 @@ namespace ScrumManager
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
             TabPage startTab = new TabPage();
-            //TODO: spr wartość w ustawieniach
             {
                 WelcomeUserControl welcomePage = new WelcomeUserControl();
                 welcomePage.Dock = DockStyle.Fill;
@@ -53,51 +62,66 @@ namespace ScrumManager
             tabControl.TabPages.Add(startTab);
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void Close_Tab_Click(object sender, EventArgs e)
         {
             var currentTab = tabControl.SelectedTab;
-            //null protecter tutaj
-            tabControl.TabPages.Remove(currentTab);
+            if (currentTab != null)
+            {
+                tabControl.TabPages.Remove(currentTab);
+            }
         }
 
 
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void Add_Button_Click(object sender, EventArgs e)
         {
+            //czysci porjekty przy zamknieciu okienka
             //spr null tag
             //albo chowaj przy nie obslugiwanych
             //rozszerza się na role tak czy tak
             var curtab = tabControl.SelectedTab;
-            char tabtag = Convert.ToChar(curtab.Tag);
+            //char tabtag = Convert.ToChar(curtab.Tag);
+            TabTagData tabtabtag = curtab.Tag as TabTagData;      
+            //null check
+            char tabtag = tabtabtag.Mode;
+            int? optID = tabtabtag.optionalID;
             switch (tabtag)
             {
                 case 'u': UserForm newUserForm = new UserForm(); newUserForm.ShowDialog(); break;
                 case 'r': RoleForm newRoleForm = new RoleForm(); newRoleForm.ShowDialog(); break;
                 case 'p': ProjectForm newProjectForm = new ProjectForm(); newProjectForm.ShowDialog(); break;
-                case 's': SprintForm newSprintForm = new SprintForm(); newSprintForm.ShowDialog(); break;
-                default: break;
+                case 's': SprintForm newSprintForm = new SprintForm(optID); newSprintForm.ShowDialog(); break;
+                case 'f': PhaseForm newPhaseForm = new PhaseForm(); newPhaseForm.ShowDialog(); break;
+                case 't': TaskForm newTaskForm = new TaskForm(); newTaskForm.ShowDialog(); break;
             }
             //curtab.Controls.Remove;
-            dataTable.TableDataMode = tabtag; //czy potrzeba?
+            //coś tutaj spr
+           //dataTable.TableDataMode = tabtag; //czy potrzeba?
+          //ay lamo
+          //pozostalosc ostatniego
             dataTable.RefreshTable();
 
         }
 
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void Refresh_Tab_Click(object sender, EventArgs e)
         {
             var curtab = tabControl.SelectedTab;
-            if (curtab.Tag != null)
+            TabTagData data = curtab.Tag as TabTagData;
+            char test = data.Mode;
+            if (test != null)
             {
                 dataTable.RefreshTable();
             }
         }
 
-        //zrób jedną funkcję parametryzowaną
+
         private void użytkownicyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TabPage test = new TabPage("Użytkownicy");
-            test.Tag = 'u';
+            TabTagData data = new TabTagData();
+            data.Mode = 'u';
+            test.Tag = data;
             dataTable = new TableUserControl();
             dataTable.TableDataMode = 'u';
             dataTable.Dock = DockStyle.Fill;
@@ -109,7 +133,9 @@ namespace ScrumManager
         private void roleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TabPage test = new TabPage("Role");
-            test.Tag = 'r';
+            TabTagData data = new TabTagData();
+            data.Mode = 'r';
+            test.Tag = data;
             dataTable = new TableUserControl();
             dataTable.TableDataMode = 'r';
             test.Controls.Add(dataTable);
@@ -119,8 +145,10 @@ namespace ScrumManager
 
         private void projektyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TabPage test = new TabPage("Projekty");
-            test.Tag = 'p';
+            TabPage test = new TabPage("Projekty");         
+            TabTagData data = new TabTagData();
+            data.Mode = 'p';
+            test.Tag = data;
             dataTable = new TableUserControl();
             dataTable.TableDataMode = 'p';
             test.Controls.Add(dataTable);
@@ -128,39 +156,37 @@ namespace ScrumManager
             tabControl.SelectedTab = test;
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void fazyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.ReportProgress(1);
-            try { DataClassesDataContext dbContext = new DataClassesDataContext(); }
-            catch { }
-            backgroundWorker1.ReportProgress(2);
-            
-
+            TabPage test = new TabPage("Fazy");
+            TabTagData data = new TabTagData();
+            data.Mode = 'f';
+            test.Tag = data;
+            dataTable = new TableUserControl();
+            dataTable.TableDataMode = 'f';
+            test.Controls.Add(dataTable);
+            tabControl.TabPages.Add(test);
+            tabControl.SelectedTab = test;
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void Edit_Button_Click(object sender, EventArgs e)
         {
-            switch (e.ProgressPercentage)
-            {
-                case 1: { toolStripStatusLabel1.Text = "Wczytywanie"; break; }
-                case 2: { toolStripStatusLabel1.Text = "Zakończono"; break; }
-            }
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
+            //gdy rekordu brak nie rób nic
             var curtab = tabControl.SelectedTab;
-            char tabtag = Convert.ToChar(curtab.Tag);
+            
+            TabTagData tabtabtag = curtab.Tag as TabTagData;
+            char tabtag = tabtabtag.Mode;
+            int? optID = tabtabtag.optionalID;
             switch (tabtag)
             {
                 case 'u': UserForm newUserForm = new UserForm(); newUserForm.ShowDialog(); break;
                 case 'r': RoleForm newRoleForm = new RoleForm(); newRoleForm.ShowDialog(); break;
                 case 'p': ProjectForm newProjectForm = new ProjectForm(dataTable.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith); newProjectForm.ShowDialog(); break;
-                case 's': SprintForm newSprintForm = new SprintForm(); newSprintForm.ShowDialog(); break;
-                default: break;
+                case 's': SprintForm newSprintForm = new SprintForm(optID); newSprintForm.ShowDialog(); break;
+                case 'f': PhaseForm newPhaseForm = new PhaseForm(); newPhaseForm.ShowDialog(); break;
+                case 't': TaskForm newTaskForm = new TaskForm(); newTaskForm.ShowDialog(); break;
             }
-            //curtab.Controls.Remove;
-            dataTable.TableDataMode = tabtag; //czy potrzeba?
+            dataTable.TableDataMode = tabtag; 
             dataTable.RefreshTable();
 
         }
@@ -169,5 +195,7 @@ namespace ScrumManager
         {
             Application.Exit();
         }
+
+       
     }
 }

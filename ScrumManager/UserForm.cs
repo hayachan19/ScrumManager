@@ -19,7 +19,7 @@ namespace ScrumManager
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-            using(DataClassesDataContext dbContext = new DataClassesDataContext())
+            using(DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString))
             { var roles = dbContext.Roles;
                 foreach (var role in roles) {
 
@@ -33,7 +33,7 @@ namespace ScrumManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DataClassesDataContext dbContext = new DataClassesDataContext();
+            DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString);
             //dbContext.Users;
             User newUser = new User();
             newUser.UserName = textBox1.Text;

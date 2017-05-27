@@ -63,10 +63,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="ConnectionData.cs" />
     <Compile Include="DataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemSelector.Designer.cs">
+      <DependentUpon>ItemSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -118,6 +125,7 @@
     <Compile Include="TableUserControl.Designer.cs">
       <DependentUpon>TableUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="TabTagData.cs" />
     <Compile Include="TaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +144,9 @@
     <Compile Include="WelcomeUserControl.Designer.cs">
       <DependentUpon>WelcomeUserControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ItemSelector.resx">
+      <DependentUpon>ItemSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

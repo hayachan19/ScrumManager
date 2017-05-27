@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -42,16 +39,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.widokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.użytkownicyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sprintyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fazyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projektyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,14 +53,10 @@
             // toolStripContainer1
             // 
             // 
-            // toolStripContainer1.BottomToolStripPanel
-            // 
-            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip1);
-            // 
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(794, 454);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(794, 476);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -82,35 +72,13 @@
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(818, 22);
-            this.statusStrip1.TabIndex = 0;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(405, 17);
-            this.toolStripStatusLabel1.Text = "status aplikacji np logowanie do bazy, background worker dla progress bara";
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(794, 454);
+            this.tabControl.Size = new System.Drawing.Size(794, 476);
             this.tabControl.TabIndex = 0;
             // 
             // toolStrip1
@@ -134,7 +102,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(22, 20);
             this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.Close_Tab_Click);
             // 
             // toolStripButton2
             // 
@@ -144,7 +112,7 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(22, 20);
             this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.Add_Button_Click);
             // 
             // toolStripButton3
             // 
@@ -154,7 +122,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(22, 20);
             this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.toolStripButton3.Click += new System.EventHandler(this.Refresh_Tab_Click);
             // 
             // toolStripButton4
             // 
@@ -164,7 +132,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(22, 20);
             this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.toolStripButton4.Click += new System.EventHandler(this.Edit_Button_Click);
             // 
             // menuStrip1
             // 
@@ -181,7 +149,7 @@
             // 
             this.widokToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.użytkownicyToolStripMenuItem,
-            this.sprintyToolStripMenuItem,
+            this.fazyToolStripMenuItem,
             this.roleToolStripMenuItem,
             this.projektyToolStripMenuItem});
             this.widokToolStripMenuItem.Name = "widokToolStripMenuItem";
@@ -195,11 +163,12 @@
             this.użytkownicyToolStripMenuItem.Text = "Użytkownicy";
             this.użytkownicyToolStripMenuItem.Click += new System.EventHandler(this.użytkownicyToolStripMenuItem_Click);
             // 
-            // sprintyToolStripMenuItem
+            // fazyToolStripMenuItem
             // 
-            this.sprintyToolStripMenuItem.Name = "sprintyToolStripMenuItem";
-            this.sprintyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sprintyToolStripMenuItem.Text = "Sprinty";
+            this.fazyToolStripMenuItem.Name = "fazyToolStripMenuItem";
+            this.fazyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fazyToolStripMenuItem.Text = "Fazy";
+            this.fazyToolStripMenuItem.Click += new System.EventHandler(this.fazyToolStripMenuItem_Click);
             // 
             // roleToolStripMenuItem
             // 
@@ -215,12 +184,6 @@
             this.projektyToolStripMenuItem.Text = "Projekty";
             this.projektyToolStripMenuItem.Click += new System.EventHandler(this.projektyToolStripMenuItem_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,8 +194,6 @@
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.LeftToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.LeftToolStripPanel.PerformLayout();
@@ -240,8 +201,6 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -253,17 +212,13 @@
         #endregion
 
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripMenuItem widokToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem użytkownicyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sprintyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ToolStripMenuItem fazyToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripMenuItem roleToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton3;

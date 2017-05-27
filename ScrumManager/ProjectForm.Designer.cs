@@ -28,110 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ProjectName_TextBox = new System.Windows.Forms.TextBox();
+            this.ProjectStart_DatePicker = new System.Windows.Forms.DateTimePicker();
+            this.ProjectEnd_DatePicker = new System.Windows.Forms.DateTimePicker();
+            this.OK_Button = new System.Windows.Forms.Button();
+            this.Cancel_Button = new System.Windows.Forms.Button();
+            this.ProjectName_Label = new System.Windows.Forms.Label();
+            this.ProjectStart_Label = new System.Windows.Forms.Label();
+            this.ProjectEnd_Label = new System.Windows.Forms.Label();
+            this.Delete_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // ProjectNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 0;
+            this.ProjectName_TextBox.Location = new System.Drawing.Point(108, 9);
+            this.ProjectName_TextBox.Name = "ProjectName_TextBox";
+            this.ProjectName_TextBox.Size = new System.Drawing.Size(200, 20);
+            this.ProjectName_TextBox.TabIndex = 0;
             // 
-            // dateTimePicker1
+            // ProjectStartDatePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(108, 37);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.ProjectStart_DatePicker.Location = new System.Drawing.Point(108, 37);
+            this.ProjectStart_DatePicker.Name = "ProjectStart_DatePicker";
+            this.ProjectStart_DatePicker.Size = new System.Drawing.Size(200, 20);
+            this.ProjectStart_DatePicker.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // ProjectEndDatePicker
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(108, 71);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 2;
+            this.ProjectEnd_DatePicker.Location = new System.Drawing.Point(108, 71);
+            this.ProjectEnd_DatePicker.Name = "ProjectEnd_DatePicker";
+            this.ProjectEnd_DatePicker.Size = new System.Drawing.Size(200, 20);
+            this.ProjectEnd_DatePicker.TabIndex = 2;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 106);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "OK";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.OK_Button.Location = new System.Drawing.Point(12, 106);
+            this.OK_Button.Name = "OK_Button";
+            this.OK_Button.Size = new System.Drawing.Size(75, 23);
+            this.OK_Button.TabIndex = 10;
+            this.OK_Button.Text = "OK";
+            this.OK_Button.UseVisualStyleBackColor = true;
+            this.OK_Button.Click += new System.EventHandler(this.OK_Button_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(233, 106);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Anuluj";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.Cancel_Button.Location = new System.Drawing.Point(233, 106);
+            this.Cancel_Button.Name = "Cancel_Button";
+            this.Cancel_Button.Size = new System.Drawing.Size(75, 23);
+            this.Cancel_Button.TabIndex = 11;
+            this.Cancel_Button.Text = "Anuluj";
+            this.Cancel_Button.UseVisualStyleBackColor = true;
+            this.Cancel_Button.Click += new System.EventHandler(this.Cancel_Button_Click);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Nazwa projektu";
+            this.ProjectName_Label.AutoSize = true;
+            this.ProjectName_Label.Location = new System.Drawing.Point(9, 12);
+            this.ProjectName_Label.Name = "ProjectName_Label";
+            this.ProjectName_Label.Size = new System.Drawing.Size(81, 13);
+            this.ProjectName_Label.TabIndex = 13;
+            this.ProjectName_Label.Text = "Nazwa projektu";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Data rozpoczęcia";
+            this.ProjectStart_Label.AutoSize = true;
+            this.ProjectStart_Label.Location = new System.Drawing.Point(9, 43);
+            this.ProjectStart_Label.Name = "ProjectStart_Label";
+            this.ProjectStart_Label.Size = new System.Drawing.Size(90, 13);
+            this.ProjectStart_Label.TabIndex = 14;
+            this.ProjectStart_Label.Text = "Data rozpoczęcia";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 77);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Data zakończenia";
+            this.ProjectEnd_Label.AutoSize = true;
+            this.ProjectEnd_Label.Location = new System.Drawing.Point(9, 77);
+            this.ProjectEnd_Label.Name = "ProjectEnd_Label";
+            this.ProjectEnd_Label.Size = new System.Drawing.Size(93, 13);
+            this.ProjectEnd_Label.TabIndex = 15;
+            this.ProjectEnd_Label.Text = "Data zakończenia";
             // 
-            // button1
+            // DeleteButton
             // 
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(125, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Usuń";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Delete_Button.ForeColor = System.Drawing.Color.Red;
+            this.Delete_Button.Location = new System.Drawing.Point(125, 106);
+            this.Delete_Button.Name = "Delete_Button";
+            this.Delete_Button.Size = new System.Drawing.Size(75, 23);
+            this.Delete_Button.TabIndex = 16;
+            this.Delete_Button.Text = "Usuń";
+            this.Delete_Button.UseVisualStyleBackColor = true;
+            this.Delete_Button.Click += new System.EventHandler(this.Delete_Button_Click);
             // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(319, 142);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Delete_Button);
+            this.Controls.Add(this.ProjectEnd_Label);
+            this.Controls.Add(this.ProjectStart_Label);
+            this.Controls.Add(this.ProjectName_Label);
+            this.Controls.Add(this.Cancel_Button);
+            this.Controls.Add(this.OK_Button);
+            this.Controls.Add(this.ProjectEnd_DatePicker);
+            this.Controls.Add(this.ProjectStart_DatePicker);
+            this.Controls.Add(this.ProjectName_TextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -144,14 +144,14 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox ProjectName_TextBox;
+        private System.Windows.Forms.DateTimePicker ProjectStart_DatePicker;
+        private System.Windows.Forms.DateTimePicker ProjectEnd_DatePicker;
+        private System.Windows.Forms.Button OK_Button;
+        private System.Windows.Forms.Button Cancel_Button;
+        private System.Windows.Forms.Label ProjectName_Label;
+        private System.Windows.Forms.Label ProjectStart_Label;
+        private System.Windows.Forms.Label ProjectEnd_Label;
+        private System.Windows.Forms.Button Delete_Button;
     }
 }

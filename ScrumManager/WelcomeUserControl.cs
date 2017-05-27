@@ -16,7 +16,7 @@ namespace ScrumManager
         {
             InitializeComponent();
 
-            DataClassesDataContext dbContext = new DataClassesDataContext();
+            DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString);
             var aaa = dbContext.ProjectMembers;
             var bbb = aaa.Where(p => p.UserId == 1);
             foreach (var item in bbb)
