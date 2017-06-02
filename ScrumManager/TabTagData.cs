@@ -10,6 +10,7 @@ namespace ScrumManager
     {
            public char Mode;
            public int? optionalID;
+        public int? optionalID2;
         public char ParentMode; //dla selektora
         
     }

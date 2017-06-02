@@ -27,6 +27,18 @@ namespace ScrumManager
          * admin
          * 
         */
+        /*
+         *jprdl
+         * mogę zrobić coś co działa, ale dla użytkownika to będzie trochę dziwne
+         * interfejs jak w sqlu, wpisujemy coś w okienko np. daj mi sprinty projektu 3
+         * sql działa i otwiera tabelkę
+         * wpisujemy edytuj/dodaj to i tamto
+         * wystakuje zakładka z polami wyciągniętymi prosto z bazy, oczywiście opisana i z polami obcymi jeżeli zajdzie potrzeba
+         * gdzieś na dole okienko z poleceniami wykonywanymi, log
+         *ostatnie poprawki do bazy i będzie można przepisać to do sql servera
+         * prototypowyform.cs ma to o co mi chodzi
+         *
+         */
         TableUserControl dataTable;
 
         public MainForm()
@@ -37,6 +49,11 @@ namespace ScrumManager
         public TabControl.TabPageCollection TabControlPages
         {
             get { return tabControl.TabPages; }
+        }
+
+        public TabPage TabControlPagesCurrent
+        {
+            get { return tabControl.SelectedTab; }
         }
 
         public TabPage TabControlPages2
@@ -92,20 +109,23 @@ namespace ScrumManager
                 case 'p': ProjectForm newProjectForm = new ProjectForm(); newProjectForm.ShowDialog(); break;
                 case 's': SprintForm newSprintForm = new SprintForm(optID); newSprintForm.ShowDialog(); break;
                 case 'f': PhaseForm newPhaseForm = new PhaseForm(); newPhaseForm.ShowDialog(); break;
-                case 't': TaskForm newTaskForm = new TaskForm(); newTaskForm.ShowDialog(); break;
+                case 't': TaskForm newTaskForm = new TaskForm(optID); newTaskForm.ShowDialog(); break;
             }
             //curtab.Controls.Remove;
             //coś tutaj spr
            //dataTable.TableDataMode = tabtag; //czy potrzeba?
-          //ay lamo
+          
           //pozostalosc ostatniego
-            dataTable.RefreshTable();
+          //nie działa
+            //dataTable.RefreshTable();
 
         }
 
 
         private void Refresh_Tab_Click(object sender, EventArgs e)
         {
+            /*
+             * nie działa
             var curtab = tabControl.SelectedTab;
             TabTagData data = curtab.Tag as TabTagData;
             char test = data.Mode;
@@ -113,6 +133,7 @@ namespace ScrumManager
             {
                 dataTable.RefreshTable();
             }
+            */
         }
 
 
@@ -184,10 +205,11 @@ namespace ScrumManager
                 case 'p': ProjectForm newProjectForm = new ProjectForm(dataTable.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith); newProjectForm.ShowDialog(); break;
                 case 's': SprintForm newSprintForm = new SprintForm(optID); newSprintForm.ShowDialog(); break;
                 case 'f': PhaseForm newPhaseForm = new PhaseForm(); newPhaseForm.ShowDialog(); break;
-                case 't': TaskForm newTaskForm = new TaskForm(); newTaskForm.ShowDialog(); break;
+                case 't': TaskForm newTaskForm = new TaskForm(optID); newTaskForm.ShowDialog(); break;
             }
             dataTable.TableDataMode = tabtag; 
-            dataTable.RefreshTable();
+            //nie działa
+            //dataTable.RefreshTable();
 
         }
 

@@ -56,7 +56,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(794, 476);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(786, 476);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // toolStripContainer1.LeftToolStripPanel
@@ -78,7 +78,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(794, 476);
+            this.tabControl.Size = new System.Drawing.Size(786, 476);
             this.tabControl.TabIndex = 0;
             // 
             // toolStrip1
@@ -91,7 +91,7 @@
             this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 3);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(24, 103);
+            this.toolStrip1.Size = new System.Drawing.Size(32, 122);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton1
@@ -100,8 +100,9 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(22, 20);
+            this.toolStripButton1.Size = new System.Drawing.Size(30, 20);
             this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Zamknij zakładkę";
             this.toolStripButton1.Click += new System.EventHandler(this.Close_Tab_Click);
             // 
             // toolStripButton2
@@ -110,18 +111,21 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(22, 20);
+            this.toolStripButton2.Size = new System.Drawing.Size(30, 20);
             this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.ToolTipText = "Dodaj";
             this.toolStripButton2.Click += new System.EventHandler(this.Add_Button_Click);
             // 
             // toolStripButton3
             // 
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Enabled = false;
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(22, 20);
+            this.toolStripButton3.Size = new System.Drawing.Size(30, 20);
             this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.ToolTipText = "Odśwież";
             this.toolStripButton3.Click += new System.EventHandler(this.Refresh_Tab_Click);
             // 
             // toolStripButton4
@@ -130,8 +134,9 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(22, 20);
+            this.toolStripButton4.Size = new System.Drawing.Size(30, 20);
             this.toolStripButton4.Text = "toolStripButton4";
+            this.toolStripButton4.ToolTipText = "Edytuj";
             this.toolStripButton4.Click += new System.EventHandler(this.Edit_Button_Click);
             // 
             // menuStrip1
@@ -159,28 +164,28 @@
             // użytkownicyToolStripMenuItem
             // 
             this.użytkownicyToolStripMenuItem.Name = "użytkownicyToolStripMenuItem";
-            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.użytkownicyToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.użytkownicyToolStripMenuItem.Text = "Użytkownicy";
             this.użytkownicyToolStripMenuItem.Click += new System.EventHandler(this.użytkownicyToolStripMenuItem_Click);
             // 
             // fazyToolStripMenuItem
             // 
             this.fazyToolStripMenuItem.Name = "fazyToolStripMenuItem";
-            this.fazyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fazyToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.fazyToolStripMenuItem.Text = "Fazy";
             this.fazyToolStripMenuItem.Click += new System.EventHandler(this.fazyToolStripMenuItem_Click);
             // 
             // roleToolStripMenuItem
             // 
             this.roleToolStripMenuItem.Name = "roleToolStripMenuItem";
-            this.roleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.roleToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.roleToolStripMenuItem.Text = "Role";
             this.roleToolStripMenuItem.Click += new System.EventHandler(this.roleToolStripMenuItem_Click);
             // 
             // projektyToolStripMenuItem
             // 
             this.projektyToolStripMenuItem.Name = "projektyToolStripMenuItem";
-            this.projektyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.projektyToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.projektyToolStripMenuItem.Text = "Projekty";
             this.projektyToolStripMenuItem.Click += new System.EventHandler(this.projektyToolStripMenuItem_Click);
             // 

@@ -99,6 +99,12 @@
     <Compile Include="ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrototypowyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrototypowyForm.Designer.cs">
+      <DependentUpon>PrototypowyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,12 +118,6 @@
     </Compile>
     <Compile Include="SprintForm.Designer.cs">
       <DependentUpon>SprintForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StatusChoiceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StatusChoiceForm.Designer.cs">
-      <DependentUpon>StatusChoiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TableUserControl.cs">
       <SubType>UserControl</SubType>
@@ -160,6 +160,9 @@
     <EmbeddedResource Include="ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrototypowyForm.resx">
+      <DependentUpon>PrototypowyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RoleForm.resx">
       <DependentUpon>RoleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,9 +177,6 @@
     </Compile>
     <EmbeddedResource Include="SprintForm.resx">
       <DependentUpon>SprintForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StatusChoiceForm.resx">
-      <DependentUpon>StatusChoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TableUserControl.resx">
       <DependentUpon>TableUserControl.cs</DependentUpon>

@@ -31,9 +31,10 @@ namespace ScrumManager
         private void TableUserControl_Load(object sender, EventArgs e)
         {
 
-            var bbb = this.Parent.Parent;
+           // var bbb = this.Parent.Parent;
             var aaa = (TabTagData)Parent.Tag;
             var ccc = aaa.optionalID;
+            var ddd = aaa.optionalID2;
 
             switch (TableDataMode)
             {
@@ -42,7 +43,7 @@ namespace ScrumManager
                 case 'f': LoadPhaseTable(); break;
                 case 'p': LoadProjectTable(); break;
                 case 's': LoadSprintTable(Convert.ToInt16(ccc)); break;
-                case 't': LoadTaskTable(Convert.ToInt16(ccc)); break;
+                case 't': LoadTaskTable(Convert.ToInt16(ccc),ddd); break;
             }
         }
 
@@ -51,7 +52,26 @@ namespace ScrumManager
             //albo nie odświeża po edycji lub na zawołanie, albo usuwa wszystko z innych zakładek
             //lepiej mieć to pierwsze
             //brzydko ale działa
-            dataTableView.Rows.Clear();
+
+            TabControl bbb = (TabControl)Parent.Parent;//.SelectedTab;
+            var ddd = bbb.SelectedTab;
+            var aaa = (TabTagData)ddd.Tag;
+            char unf = aaa.Mode;
+            TableDataMode = unf;
+            //chyba mam
+            //rows clear czyści wszystko z tą nazwą
+            //trzeba zmusić go do jednej zakładki
+            
+            //odswiez ustawia tryb projektow na zakładkę odswiezaną i kasuje zawartosc okienka, ale to pewnie wina argumentow
+            //jako że mam tylko jeden łeb i brak możliwości innego spojrzenia, wyłączam możliwość odświeżania
+            //otwarcie zakładki z menu daje świeże dane
+            MainForm mainFormtest = (MainForm)this.Parent.Parent.Parent.Parent.Parent; //heh
+            var iii = mainFormtest.TabControlPagesCurrent.Controls[0].Controls[0];
+            var kkk = (DataGridView)iii;
+            kkk.Rows.Clear();
+           // DataGridView thingToRefresh
+            //thingToRefresh.Rows.Clear();
+            //dataTableView.Rows.Clear();
             TableUserControl_Load(null, null);
         }
 
@@ -122,15 +142,17 @@ namespace ScrumManager
             }
         }
 
-        private void LoadTaskTable(int projectId)
+        private void LoadTaskTable(int projectId, int? sprintId)
         {
             DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString);
-            var test = dbContext.Tasks.Where(p => p.ProjectId == projectId);
+            IQueryable<ScrumManager.Task> data;
+            if (sprintId != null) data = dbContext.Tasks.Where(s => s.SprintTasks.Any(p => p.Sprint.ProjectId == projectId));
+            else data = dbContext.Tasks.Where(p => p.ProjectId == projectId);
             dataTableView.ColumnCount = 3;
             dataTableView.Columns[0].Name = "ID";
             dataTableView.Columns[1].Name = "Nazwa";
             dataTableView.Columns[2].Name = "start";
-            foreach (var row in test)
+            foreach (var row in data)
             {
                 string[] record = { row.Id.ToString(), row.Name, row.ProjectId.ToString() };
                 dataTableView.Rows.Add(record);
@@ -169,7 +191,7 @@ namespace ScrumManager
                         //test.Tag = 's';
                         TableUserControl dataTable = new TableUserControl();
                         dataTable.TableDataMode = 's';
-                        dataTable.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = testid;
+                       dataTable.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = testid;
                         test.Controls.Add(dataTable);
 
                         TabPage test2 = new TabPage("Zadania projektu " + testid);
@@ -202,15 +224,36 @@ namespace ScrumManager
                     }
                 case 's':
                     {
-                        var aaa = (TabPage)this.Parent.Tag;
+                        var aaa = (TabTagData)this.Parent.Tag;
                         //var wambo = aaa.optionalID;
-                        int? projectID = 5;// (TabPage)this.Parent;
+                        int? projectID = aaa.optionalID;// (TabPage)this.Parent;
                         TabPage test = new TabPage("Zadania sprintu " + testid + " projektu" + projectID);
-                        test.Tag = 't';
+                        TabTagData data = new TabTagData();
+                        data.Mode = 't';
+                        data.optionalID = testid;
+                        data.optionalID2 = projectID;
+                        test.Tag = data;
                         TableUserControl dataTable = new TableUserControl();
                         dataTable.TableDataMode = 't';
                         dataTable.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = testid;
+                        dataTable.anotherMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = projectID;
                         test.Controls.Add(dataTable);
+                        MainForm mainFormtest = (MainForm)this.Parent.Parent.Parent.Parent.Parent; //heh
+                        mainFormtest.TabControlPages2 = test;
+
+
+                        /*
+
+                                                TabPage test2 = new TabPage("Zadania projektu " + testid);
+                                                TabTagData data2 = new TabTagData();
+                                                data2.Mode = 't';
+                                                data2.optionalID = testid;
+                                                test2.Tag = data2;
+                                                //test2.Tag = 't';
+                                                TableUserControl dataTable2 = new TableUserControl();
+                                                dataTable2.TableDataMode = 't';
+                                                dataTable2.someMiscTempVarThatShoudntBeHereInTheFirstPlaceToBeginWith = testid;
+                                                test2.Controls.Add(dataTable2);*/
                         break;
                     }
                 case 't':
