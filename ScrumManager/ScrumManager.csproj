@@ -69,11 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
-    <Compile Include="ItemSelector.cs">
-      <SubType>Form</SubType>
+    <Compile Include="DetailPanel.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ItemSelector.Designer.cs">
-      <DependentUpon>ItemSelector.cs</DependentUpon>
+    <Compile Include="DetailPanel.Designer.cs">
+      <DependentUpon>DetailPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -87,84 +87,29 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PhaseForm.Designer.cs">
-      <DependentUpon>PhaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectForm.Designer.cs">
-      <DependentUpon>ProjectForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PrototypowyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PrototypowyForm.Designer.cs">
-      <DependentUpon>PrototypowyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoleForm.Designer.cs">
-      <DependentUpon>RoleForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SprintForm.cs">
+    <Compile Include="SelectorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SprintForm.Designer.cs">
-      <DependentUpon>SprintForm.cs</DependentUpon>
+    <Compile Include="SelectorForm.Designer.cs">
+      <DependentUpon>SelectorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TableUserControl.cs">
+    <Compile Include="TableView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TableUserControl.Designer.cs">
-      <DependentUpon>TableUserControl.cs</DependentUpon>
+    <Compile Include="TableView.Designer.cs">
+      <DependentUpon>TableView.cs</DependentUpon>
     </Compile>
     <Compile Include="TabTagData.cs" />
-    <Compile Include="TaskForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TaskForm.Designer.cs">
-      <DependentUpon>TaskForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WelcomeUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WelcomeUserControl.Designer.cs">
-      <DependentUpon>WelcomeUserControl.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="ItemSelector.resx">
-      <DependentUpon>ItemSelector.cs</DependentUpon>
+    <EmbeddedResource Include="DetailPanel.resx">
+      <DependentUpon>DetailPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PhaseForm.resx">
-      <DependentUpon>PhaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectForm.resx">
-      <DependentUpon>ProjectForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PrototypowyForm.resx">
-      <DependentUpon>PrototypowyForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoleForm.resx">
-      <DependentUpon>RoleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -175,20 +120,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SprintForm.resx">
-      <DependentUpon>SprintForm.cs</DependentUpon>
+    <EmbeddedResource Include="SelectorForm.resx">
+      <DependentUpon>SelectorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TableUserControl.resx">
-      <DependentUpon>TableUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TaskForm.resx">
-      <DependentUpon>TaskForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserForm.resx">
-      <DependentUpon>UserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WelcomeUserControl.resx">
-      <DependentUpon>WelcomeUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="TableView.resx">
+      <DependentUpon>TableView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -215,10 +151,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ScrumManager.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="ScrumManager_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
