@@ -45,9 +45,6 @@ namespace ScrumManager
     partial void InsertSprint(Sprint instance);
     partial void UpdateSprint(Sprint instance);
     partial void DeleteSprint(Sprint instance);
-    partial void InsertSprintTask(SprintTask instance);
-    partial void UpdateSprintTask(SprintTask instance);
-    partial void DeleteSprintTask(SprintTask instance);
     partial void InsertTask(Task instance);
     partial void UpdateTask(Task instance);
     partial void DeleteTask(Task instance);
@@ -57,6 +54,9 @@ namespace ScrumManager
     partial void InsertRole(Role instance);
     partial void UpdateRole(Role instance);
     partial void DeleteRole(Role instance);
+    partial void InsertSprintTask(SprintTask instance);
+    partial void UpdateSprintTask(SprintTask instance);
+    partial void DeleteSprintTask(SprintTask instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -129,14 +129,6 @@ namespace ScrumManager
 			}
 		}
 		
-		public System.Data.Linq.Table<SprintTask> SprintTasks
-		{
-			get
-			{
-				return this.GetTable<SprintTask>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Task> Tasks
 		{
 			get
@@ -158,6 +150,14 @@ namespace ScrumManager
 			get
 			{
 				return this.GetTable<Role>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SprintTask> SprintTasks
+		{
+			get
+			{
+				return this.GetTable<SprintTask>();
 			}
 		}
 	}
@@ -1140,263 +1140,6 @@ namespace ScrumManager
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SprintTasks")]
-	public partial class SprintTask : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _SprintId;
-		
-		private int _TaskId;
-		
-		private int _PhaseId;
-		
-		private EntityRef<Phase> _Phase;
-		
-		private EntityRef<Sprint> _Sprint;
-		
-		private EntityRef<Task> _Task;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnSprintIdChanging(int value);
-    partial void OnSprintIdChanged();
-    partial void OnTaskIdChanging(int value);
-    partial void OnTaskIdChanged();
-    partial void OnPhaseIdChanging(int value);
-    partial void OnPhaseIdChanged();
-    #endregion
-		
-		public SprintTask()
-		{
-			this._Phase = default(EntityRef<Phase>);
-			this._Sprint = default(EntityRef<Sprint>);
-			this._Task = default(EntityRef<Task>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SprintId", DbType="Int NOT NULL")]
-		public int SprintId
-		{
-			get
-			{
-				return this._SprintId;
-			}
-			set
-			{
-				if ((this._SprintId != value))
-				{
-					if (this._Sprint.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSprintIdChanging(value);
-					this.SendPropertyChanging();
-					this._SprintId = value;
-					this.SendPropertyChanged("SprintId");
-					this.OnSprintIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskId", DbType="Int NOT NULL")]
-		public int TaskId
-		{
-			get
-			{
-				return this._TaskId;
-			}
-			set
-			{
-				if ((this._TaskId != value))
-				{
-					if (this._Task.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTaskIdChanging(value);
-					this.SendPropertyChanging();
-					this._TaskId = value;
-					this.SendPropertyChanged("TaskId");
-					this.OnTaskIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhaseId", DbType="Int NOT NULL")]
-		public int PhaseId
-		{
-			get
-			{
-				return this._PhaseId;
-			}
-			set
-			{
-				if ((this._PhaseId != value))
-				{
-					if (this._Phase.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPhaseIdChanging(value);
-					this.SendPropertyChanging();
-					this._PhaseId = value;
-					this.SendPropertyChanged("PhaseId");
-					this.OnPhaseIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phase_SprintTask", Storage="_Phase", ThisKey="PhaseId", OtherKey="Id", IsForeignKey=true)]
-		public Phase Phase
-		{
-			get
-			{
-				return this._Phase.Entity;
-			}
-			set
-			{
-				Phase previousValue = this._Phase.Entity;
-				if (((previousValue != value) 
-							|| (this._Phase.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Phase.Entity = null;
-						previousValue.SprintTasks.Remove(this);
-					}
-					this._Phase.Entity = value;
-					if ((value != null))
-					{
-						value.SprintTasks.Add(this);
-						this._PhaseId = value.Id;
-					}
-					else
-					{
-						this._PhaseId = default(int);
-					}
-					this.SendPropertyChanged("Phase");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sprint_SprintTask", Storage="_Sprint", ThisKey="SprintId", OtherKey="Id", IsForeignKey=true)]
-		public Sprint Sprint
-		{
-			get
-			{
-				return this._Sprint.Entity;
-			}
-			set
-			{
-				Sprint previousValue = this._Sprint.Entity;
-				if (((previousValue != value) 
-							|| (this._Sprint.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Sprint.Entity = null;
-						previousValue.SprintTasks.Remove(this);
-					}
-					this._Sprint.Entity = value;
-					if ((value != null))
-					{
-						value.SprintTasks.Add(this);
-						this._SprintId = value.Id;
-					}
-					else
-					{
-						this._SprintId = default(int);
-					}
-					this.SendPropertyChanged("Sprint");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Task_SprintTask", Storage="_Task", ThisKey="TaskId", OtherKey="Id", IsForeignKey=true)]
-		public Task Task
-		{
-			get
-			{
-				return this._Task.Entity;
-			}
-			set
-			{
-				Task previousValue = this._Task.Entity;
-				if (((previousValue != value) 
-							|| (this._Task.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Task.Entity = null;
-						previousValue.SprintTasks.Remove(this);
-					}
-					this._Task.Entity = value;
-					if ((value != null))
-					{
-						value.SprintTasks.Add(this);
-						this._TaskId = value.Id;
-					}
-					else
-					{
-						this._TaskId = default(int);
-					}
-					this.SendPropertyChanged("Task");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tasks")]
 	public partial class Task : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1596,6 +1339,8 @@ namespace ScrumManager
 		
 		private EntitySet<ProjectMember> _ProjectMembers;
 		
+		private EntitySet<SprintTask> _SprintTasks;
+		
 		private EntityRef<Role> _Role;
 		
     #region Extensibility Method Definitions
@@ -1619,6 +1364,7 @@ namespace ScrumManager
 		public User()
 		{
 			this._ProjectMembers = new EntitySet<ProjectMember>(new Action<ProjectMember>(this.attach_ProjectMembers), new Action<ProjectMember>(this.detach_ProjectMembers));
+			this._SprintTasks = new EntitySet<SprintTask>(new Action<SprintTask>(this.attach_SprintTasks), new Action<SprintTask>(this.detach_SprintTasks));
 			this._Role = default(EntityRef<Role>);
 			OnCreated();
 		}
@@ -1760,6 +1506,19 @@ namespace ScrumManager
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_SprintTask", Storage="_SprintTasks", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<SprintTask> SprintTasks
+		{
+			get
+			{
+				return this._SprintTasks;
+			}
+			set
+			{
+				this._SprintTasks.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Role_User", Storage="_Role", ThisKey="RoleId", OtherKey="Id", IsForeignKey=true)]
 		public Role Role
 		{
@@ -1821,6 +1580,18 @@ namespace ScrumManager
 		}
 		
 		private void detach_ProjectMembers(ProjectMember entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = null;
+		}
+		
+		private void attach_SprintTasks(SprintTask entity)
+		{
+			this.SendPropertyChanging();
+			entity.User = this;
+		}
+		
+		private void detach_SprintTasks(SprintTask entity)
 		{
 			this.SendPropertyChanging();
 			entity.User = null;
@@ -1962,6 +1733,328 @@ namespace ScrumManager
 		{
 			this.SendPropertyChanging();
 			entity.Role = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SprintTasks")]
+	public partial class SprintTask : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _SprintId;
+		
+		private int _TaskId;
+		
+		private int _PhaseId;
+		
+		private int _UserId;
+		
+		private EntityRef<Phase> _Phase;
+		
+		private EntityRef<Sprint> _Sprint;
+		
+		private EntityRef<Task> _Task;
+		
+		private EntityRef<User> _User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnSprintIdChanging(int value);
+    partial void OnSprintIdChanged();
+    partial void OnTaskIdChanging(int value);
+    partial void OnTaskIdChanged();
+    partial void OnPhaseIdChanging(int value);
+    partial void OnPhaseIdChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public SprintTask()
+		{
+			this._Phase = default(EntityRef<Phase>);
+			this._Sprint = default(EntityRef<Sprint>);
+			this._Task = default(EntityRef<Task>);
+			this._User = default(EntityRef<User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SprintId", DbType="Int NOT NULL")]
+		public int SprintId
+		{
+			get
+			{
+				return this._SprintId;
+			}
+			set
+			{
+				if ((this._SprintId != value))
+				{
+					if (this._Sprint.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSprintIdChanging(value);
+					this.SendPropertyChanging();
+					this._SprintId = value;
+					this.SendPropertyChanged("SprintId");
+					this.OnSprintIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaskId", DbType="Int NOT NULL")]
+		public int TaskId
+		{
+			get
+			{
+				return this._TaskId;
+			}
+			set
+			{
+				if ((this._TaskId != value))
+				{
+					if (this._Task.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTaskIdChanging(value);
+					this.SendPropertyChanging();
+					this._TaskId = value;
+					this.SendPropertyChanged("TaskId");
+					this.OnTaskIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhaseId", DbType="Int NOT NULL")]
+		public int PhaseId
+		{
+			get
+			{
+				return this._PhaseId;
+			}
+			set
+			{
+				if ((this._PhaseId != value))
+				{
+					if (this._Phase.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPhaseIdChanging(value);
+					this.SendPropertyChanging();
+					this._PhaseId = value;
+					this.SendPropertyChanged("PhaseId");
+					this.OnPhaseIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phase_SprintTask", Storage="_Phase", ThisKey="PhaseId", OtherKey="Id", IsForeignKey=true)]
+		public Phase Phase
+		{
+			get
+			{
+				return this._Phase.Entity;
+			}
+			set
+			{
+				Phase previousValue = this._Phase.Entity;
+				if (((previousValue != value) 
+							|| (this._Phase.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Phase.Entity = null;
+						previousValue.SprintTasks.Remove(this);
+					}
+					this._Phase.Entity = value;
+					if ((value != null))
+					{
+						value.SprintTasks.Add(this);
+						this._PhaseId = value.Id;
+					}
+					else
+					{
+						this._PhaseId = default(int);
+					}
+					this.SendPropertyChanged("Phase");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Sprint_SprintTask", Storage="_Sprint", ThisKey="SprintId", OtherKey="Id", IsForeignKey=true)]
+		public Sprint Sprint
+		{
+			get
+			{
+				return this._Sprint.Entity;
+			}
+			set
+			{
+				Sprint previousValue = this._Sprint.Entity;
+				if (((previousValue != value) 
+							|| (this._Sprint.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Sprint.Entity = null;
+						previousValue.SprintTasks.Remove(this);
+					}
+					this._Sprint.Entity = value;
+					if ((value != null))
+					{
+						value.SprintTasks.Add(this);
+						this._SprintId = value.Id;
+					}
+					else
+					{
+						this._SprintId = default(int);
+					}
+					this.SendPropertyChanged("Sprint");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Task_SprintTask", Storage="_Task", ThisKey="TaskId", OtherKey="Id", IsForeignKey=true)]
+		public Task Task
+		{
+			get
+			{
+				return this._Task.Entity;
+			}
+			set
+			{
+				Task previousValue = this._Task.Entity;
+				if (((previousValue != value) 
+							|| (this._Task.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Task.Entity = null;
+						previousValue.SprintTasks.Remove(this);
+					}
+					this._Task.Entity = value;
+					if ((value != null))
+					{
+						value.SprintTasks.Add(this);
+						this._TaskId = value.Id;
+					}
+					else
+					{
+						this._TaskId = default(int);
+					}
+					this.SendPropertyChanged("Task");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_SprintTask", Storage="_User", ThisKey="UserId", OtherKey="Id", IsForeignKey=true)]
+		public User User
+		{
+			get
+			{
+				return this._User.Entity;
+			}
+			set
+			{
+				User previousValue = this._User.Entity;
+				if (((previousValue != value) 
+							|| (this._User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._User.Entity = null;
+						previousValue.SprintTasks.Remove(this);
+					}
+					this._User.Entity = value;
+					if ((value != null))
+					{
+						value.SprintTasks.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

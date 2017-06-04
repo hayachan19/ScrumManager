@@ -23,31 +23,53 @@ namespace ScrumManager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.UserID = textBox1.Text;
-            builder.Password = textBox2.Text;
-            builder.DataSource = textBox3.Text;
-            builder.InitialCatalog = "ScrumManager";
-            ConnectionData.connectionString = builder.ConnectionString;
-            try
+            if (textBox1.Text == "" || textBox2.Text == "") { }
+            else
             {
-                using (SqlConnection conn = new SqlConnection(ConnectionData.connectionString))
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                if (checkBox1.Checked)
                 {
-                    conn.Open();
+                    builder.DataSource = @"(LocalDB)\MSSQLLocalDB";
+                    builder.AttachDBFilename = @"|DataDirectory|\ScrumManager.mdf";
+                    builder.IntegratedSecurity = true;
                 }
+                else
+                {
+                    builder.UserID = textBox1.Text;
+                    builder.Password = textBox2.Text;
+                    builder.DataSource = textBox3.Text;
+                    builder.InitialCatalog = "ScrumManager";
+                }
+                ConnectionData.connectionString = builder.ConnectionString;
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(ConnectionData.connectionString))
+                    {
+                        conn.Open();
+                    }
 
-                if (Properties.Settings.Default.LastServerName != textBox3.Text)
-                {
-                    Properties.Settings.Default.LastServerName = textBox3.Text;
-                    Properties.Settings.Default.Save();
+                    if (Properties.Settings.Default.LastServerName != textBox3.Text)
+                    {
+                        Properties.Settings.Default.LastServerName = textBox3.Text;
+                        Properties.Settings.Default.Save();
+                    }
+
+                    if (checkBox1.Checked)
+                    {
+                        DataClassesDataContext dbContext = new DataClassesDataContext(ConnectionData.connectionString);
+                        User currentUser = dbContext.Users.Single(p => p.UserName == textBox1.Text && p.Password == textBox2.Text);
+                        ConnectionData.currentUser = currentUser.Id;
+                        ConnectionData.role = currentUser.Role.SQLName;
+                    }
+
+                    MainForm main = new MainForm();
+                    main.Show();
+                    this.Hide();
                 }
-                MainForm main = new MainForm();
-                main.Show();
-                this.Hide();
-            }
-            catch (SqlException)
-            {
-                DialogResult sqlError = MessageBox.Show("Niepoprawne dane logowania", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (SqlException)
+                {
+                    DialogResult sqlError = MessageBox.Show("Niepoprawne dane logowania", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -56,32 +78,6 @@ namespace ScrumManager
             Application.Exit();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = @"(LocalDB)\MSSQLLocalDB";
-            builder.AttachDBFilename = @"|DataDirectory|\ScrumManager.mdf";
-            builder.IntegratedSecurity = true;
-            ConnectionData.connectionString = builder.ConnectionString;
 
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(ConnectionData.connectionString))
-                {
-                    conn.Open();
-                }
-
-                if (Properties.Settings.Default.LastServerName != textBox3.Text)
-                { Properties.Settings.Default.LastServerName = textBox3.Text;
-                    Properties.Settings.Default.Save(); }
-                MainForm main = new MainForm();
-                main.Show();
-                this.Hide();
-            }
-            catch (SqlException)
-            {
-                DialogResult sqlError = MessageBox.Show("Niepoprawne dane logowania", "Błąd logowania", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
     }
 }

@@ -15,17 +15,11 @@ namespace ScrumManager
         public MainForm()
         {
             InitializeComponent();
-            //sprinty i zadania wymagają parametru lub dwóch
-            string[] adwsfasdf = new string[] { "projects", "sprints", "tasks", "users", "roles", "phases" };
-            foreach (string a in adwsfasdf)
+            if (ConnectionData.role == "SM_ROLE_SUPERVISOR" || ConnectionData.role == "SM_ROLE_WORKER")
             {
-                TableView newTable = new TableView(a, 1, null);
-                newTable.Dock = DockStyle.Fill;
-                TabPage newView = new TabPage(a);
-                newView.Controls.Add(newTable);
-                tabControl1.TabPages.Add(newView);
-                tabControl1.SelectedTab = newView;
-            }
+                użytkownicyToolStripMenuItem.Visible = false;
+                roleToolStripMenuItem.Visible = false;
+            }          
         }
 
 
@@ -36,34 +30,97 @@ namespace ScrumManager
 
         private void pokażToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void pokażToolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            //sprint
-            //open form/ get value from form
-            int a;
-            int? b;
-            using (SelectorForm selector = new SelectorForm())
-            {
-                selector.ShowDialog();
-                a = selector.returnProjectId;
-                b = selector.returnSprintId;
-            }
-
-
-            TableView newTable = new TableView("sprints", a, b);
+            //projekty
+            TableView newTable = new TableView("projects", null, null);
             newTable.Dock = DockStyle.Fill;
-            TabPage newView = new TabPage("sprints");
+            TabPage newView = new TabPage("projects");
             newView.Controls.Add(newTable);
             tabControl1.TabPages.Add(newView);
             tabControl1.SelectedTab = newView;
         }
 
+        private void pokażToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            //sprint
+            int a;
+            SelectorForm selector = new SelectorForm();
+            selector.sprintSelector = false;
+            selector.ShowDialog();
+            a = selector.returnProjectId;
+            if (selector.properExit == true)
+            {
+                TableView newTable = new TableView("sprints", a, null);
+                newTable.Dock = DockStyle.Fill;
+                TabPage newView = new TabPage("sprints");
+                newView.Controls.Add(newTable);
+                tabControl1.TabPages.Add(newView);
+                tabControl1.SelectedTab = newView;
+            }
+        }
+
         private void pokażToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             //zadania
+            int a;
+            int? b;
+            SelectorForm selector = new SelectorForm();
+            selector.sprintSelector = true;
+            selector.ShowDialog();
+            a = selector.returnProjectId;
+            b = selector.returnSprintId;
+            if (selector.properExit == true)
+            {
+                TableView newTable = new TableView("tasks", a, b);
+                newTable.Dock = DockStyle.Fill;
+                TabPage newView = new TabPage("tasks");
+                newView.Controls.Add(newTable);
+                tabControl1.TabPages.Add(newView);
+                tabControl1.SelectedTab = newView;
+            }
+        }
+
+        private void pokażToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //użytki
+            TableView newTable = new TableView("users", null, null);
+            newTable.Dock = DockStyle.Fill;
+            TabPage newView = new TabPage("users");
+            newView.Controls.Add(newTable);
+            tabControl1.TabPages.Add(newView);
+            tabControl1.SelectedTab = newView;
+        }
+
+        private void pokażToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //role
+            TableView newTable = new TableView("roles", null, null);
+            newTable.Dock = DockStyle.Fill;
+            TabPage newView = new TabPage("roles");
+            newView.Controls.Add(newTable);
+            tabControl1.TabPages.Add(newView);
+            tabControl1.SelectedTab = newView;
+        }
+
+        private void pokażToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            //fazy
+            TableView newTable = new TableView("phases", null, null);
+            newTable.Dock = DockStyle.Fill;
+            TabPage newView = new TabPage("phases");
+            newView.Controls.Add(newTable);
+            tabControl1.TabPages.Add(newView);
+            tabControl1.SelectedTab = newView;
+        }
+
+        private void pokażPrzejściaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //phaseflow
+            TableView newTable = new TableView("phaseflow", null, null);
+            newTable.Dock = DockStyle.Fill;
+            TabPage newView = new TabPage("phaseflow");
+            newView.Controls.Add(newTable);
+            tabControl1.TabPages.Add(newView);
+            tabControl1.SelectedTab = newView;
         }
     }
 }

@@ -62,18 +62,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComboBoxItem.cs" />
     <Compile Include="ConnectionData.cs" />
     <Compile Include="DataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DetailPanel.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="DataSelectorForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetailPanel.Designer.cs">
-      <DependentUpon>DetailPanel.cs</DependentUpon>
+    <Compile Include="DataSelectorForm.Designer.cs">
+      <DependentUpon>DataSelectorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -101,9 +100,8 @@
     <Compile Include="TableView.Designer.cs">
       <DependentUpon>TableView.cs</DependentUpon>
     </Compile>
-    <Compile Include="TabTagData.cs" />
-    <EmbeddedResource Include="DetailPanel.resx">
-      <DependentUpon>DetailPanel.cs</DependentUpon>
+    <EmbeddedResource Include="DataSelectorForm.resx">
+      <DependentUpon>DataSelectorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -151,10 +149,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ScrumManager.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ScrumManager_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

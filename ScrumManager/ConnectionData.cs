@@ -9,6 +9,8 @@ namespace ScrumManager
     public static class ConnectionData
     {
         public static string connectionString;
+        public static string role;
+        public static int currentUser;
 
     }
 }

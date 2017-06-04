@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.projektyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,7 @@
             this.pokażToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.fazyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pokażToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pokażPrzejściaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -85,7 +87,7 @@
             // pokażToolStripMenuItem
             // 
             this.pokażToolStripMenuItem.Name = "pokażToolStripMenuItem";
-            this.pokażToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pokażToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.pokażToolStripMenuItem.Text = "Pokaż";
             this.pokażToolStripMenuItem.Click += new System.EventHandler(this.pokażToolStripMenuItem_Click);
             // 
@@ -100,7 +102,7 @@
             // pokażToolStripMenuItem5
             // 
             this.pokażToolStripMenuItem5.Name = "pokażToolStripMenuItem5";
-            this.pokażToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.pokażToolStripMenuItem5.Size = new System.Drawing.Size(105, 22);
             this.pokażToolStripMenuItem5.Text = "Pokaż";
             this.pokażToolStripMenuItem5.Click += new System.EventHandler(this.pokażToolStripMenuItem5_Click);
             // 
@@ -115,7 +117,7 @@
             // pokażToolStripMenuItem4
             // 
             this.pokażToolStripMenuItem4.Name = "pokażToolStripMenuItem4";
-            this.pokażToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.pokażToolStripMenuItem4.Size = new System.Drawing.Size(105, 22);
             this.pokażToolStripMenuItem4.Text = "Pokaż";
             this.pokażToolStripMenuItem4.Click += new System.EventHandler(this.pokażToolStripMenuItem4_Click);
             // 
@@ -132,6 +134,7 @@
             this.pokażToolStripMenuItem1.Name = "pokażToolStripMenuItem1";
             this.pokażToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.pokażToolStripMenuItem1.Text = "Pokaż";
+            this.pokażToolStripMenuItem1.Click += new System.EventHandler(this.pokażToolStripMenuItem1_Click);
             // 
             // roleToolStripMenuItem
             // 
@@ -146,11 +149,13 @@
             this.pokażToolStripMenuItem2.Name = "pokażToolStripMenuItem2";
             this.pokażToolStripMenuItem2.Size = new System.Drawing.Size(105, 22);
             this.pokażToolStripMenuItem2.Text = "Pokaż";
+            this.pokażToolStripMenuItem2.Click += new System.EventHandler(this.pokażToolStripMenuItem2_Click);
             // 
             // fazyToolStripMenuItem
             // 
             this.fazyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pokażToolStripMenuItem3});
+            this.pokażToolStripMenuItem3,
+            this.pokażPrzejściaToolStripMenuItem});
             this.fazyToolStripMenuItem.Name = "fazyToolStripMenuItem";
             this.fazyToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.fazyToolStripMenuItem.Text = "Fazy";
@@ -158,8 +163,16 @@
             // pokażToolStripMenuItem3
             // 
             this.pokażToolStripMenuItem3.Name = "pokażToolStripMenuItem3";
-            this.pokażToolStripMenuItem3.Size = new System.Drawing.Size(105, 22);
+            this.pokażToolStripMenuItem3.Size = new System.Drawing.Size(153, 22);
             this.pokażToolStripMenuItem3.Text = "Pokaż";
+            this.pokażToolStripMenuItem3.Click += new System.EventHandler(this.pokażToolStripMenuItem3_Click);
+            // 
+            // pokażPrzejściaToolStripMenuItem
+            // 
+            this.pokażPrzejściaToolStripMenuItem.Name = "pokażPrzejściaToolStripMenuItem";
+            this.pokażPrzejściaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.pokażPrzejściaToolStripMenuItem.Text = "Pokaż przejścia";
+            this.pokażPrzejściaToolStripMenuItem.Click += new System.EventHandler(this.pokażPrzejściaToolStripMenuItem_Click);
             // 
             // toolStripContainer1
             // 
@@ -186,9 +199,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 517);
             this.Controls.Add(this.toolStripContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "PrototypowyForm";
+            this.Text = "ScrumManager";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -217,5 +231,6 @@
         private System.Windows.Forms.ToolStripMenuItem pokażToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem pokażToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem pokażToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem pokażPrzejściaToolStripMenuItem;
     }
 }

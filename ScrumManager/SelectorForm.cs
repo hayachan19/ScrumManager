@@ -19,6 +19,9 @@ namespace ScrumManager
 
         int projectId;
         int? sprintId;
+        bool isAccepted = false;
+        public bool sprintSelector { set { panel2.Visible = value; } }
+            
 
         public int returnProjectId
         {
@@ -28,6 +31,11 @@ namespace ScrumManager
         public int? returnSprintId
         {
             get { return sprintId; }
+        }
+
+        public bool properExit
+        {
+            get { return isAccepted; }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -41,6 +49,7 @@ namespace ScrumManager
             projectId = (int)numericUpDown1.Value;
             if (checkBox1.Checked) { sprintId = (int)numericUpDown2.Value; }
             else { sprintId = null; }
+            isAccepted = true;
             Close();
         }
     }

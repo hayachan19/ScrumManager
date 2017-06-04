@@ -49,17 +49,6 @@
       <Association Name="Project_Sprint" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Project" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SprintTasks" Member="SprintTasks">
-    <Type Name="SprintTask">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SprintId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PhaseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Phase_SprintTask" Member="Phase" ThisKey="PhaseId" OtherKey="Id" Type="Phase" IsForeignKey="true" />
-      <Association Name="Sprint_SprintTask" Member="Sprint" ThisKey="SprintId" OtherKey="Id" Type="Sprint" IsForeignKey="true" />
-      <Association Name="Task_SprintTask" Member="Task" ThisKey="TaskId" OtherKey="Id" Type="Task" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Tasks" Member="Tasks">
     <Type Name="Task">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -78,6 +67,7 @@
       <Column Name="ContactEmail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="User_ProjectMember" Member="ProjectMembers" ThisKey="Id" OtherKey="UserId" Type="ProjectMember" />
+      <Association Name="User_SprintTask" Member="SprintTasks" ThisKey="Id" OtherKey="UserId" Type="SprintTask" />
       <Association Name="Role_User" Member="Role" ThisKey="RoleId" OtherKey="Id" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>
@@ -87,6 +77,19 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="SQLName" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
       <Association Name="Role_User" Member="Users" ThisKey="Id" OtherKey="RoleId" Type="User" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SprintTasks" Member="SprintTasks">
+    <Type Name="SprintTask">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SprintId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhaseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Phase_SprintTask" Member="Phase" ThisKey="PhaseId" OtherKey="Id" Type="Phase" IsForeignKey="true" />
+      <Association Name="Sprint_SprintTask" Member="Sprint" ThisKey="SprintId" OtherKey="Id" Type="Sprint" IsForeignKey="true" />
+      <Association Name="Task_SprintTask" Member="Task" ThisKey="TaskId" OtherKey="Id" Type="Task" IsForeignKey="true" />
+      <Association Name="User_SprintTask" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
