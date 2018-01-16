@@ -1,7 +1,4 @@
-co za syf
-naprawdê wola³bym tego nie przepisywaæ od nowa maj¹c na to tylko trzy dni dzielone na pracê na innym projektem
-nie dam rady
-baza jest ale interfejs to jakiœ szajs
-tyle poucinane, nastêpne bêd¹ role dzia³aj¹ce tylko programowo, chocia¿ i to jest za du¿o roboty
+This is an old uni project, unfinished, broken and overall it would require another rewrite to make this useful. Maybe some day.
+Concept is still there, login into a server that hosts a database consisting of the informations about projects and their corresponding sprints, along with users, user groups and states. Supposed to be run against MS SQL Server, it only runs on the supplied LocalDB. Also WinForms.
 
-wiêcej w scrummanager/mainform.cs
+Don't bother touching, I don't really write code comments and if, they're either mixed language or random letters.
